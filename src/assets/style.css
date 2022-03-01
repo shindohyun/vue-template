@@ -1,0 +1,4 @@
+/* vuetify */
+.v-app-bar-title__content{
+  width: min-content !important;
+}

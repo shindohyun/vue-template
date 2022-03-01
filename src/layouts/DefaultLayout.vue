@@ -75,8 +75,3 @@ export default {
   }),
 };
 </script>
-<style>
-.v-app-bar-title__content{
-  width: min-content !important;
-}
-</style>
