@@ -7,6 +7,7 @@ import Dashboard from '../views/Dashboard.vue'
 import GridSystem from '../views/GridSystem.vue'
 import Signin from '../views/authentication/Signin.vue'
 import Signup from '../views/authentication/Signup.vue'
+import ResetPassword from '../views/authentication/ResetPassword.vue'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,11 @@ const routes = [
         path: 'signup',
         name: 'Signup',
         component: Signup
+      },
+      {
+        path: 'reset-password',
+        name: 'ResetPassword',
+        component: ResetPassword
       }
     ]
   }
