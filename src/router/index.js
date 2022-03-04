@@ -3,11 +3,12 @@ import VueRouter from 'vue-router'
 import DefaultLayout from '../layouts/DefaultLayout.vue'
 import AuthenticationLayout from '../layouts/AuthenticationLayout.vue'
 import Home from '../views/Home.vue'
-import Dashboard from '../views/Dashboard.vue'
-import GridSystem from '../views/GridSystem.vue'
 import Signin from '../views/authentication/Signin.vue'
 import Signup from '../views/authentication/Signup.vue'
 import ResetPassword from '../views/authentication/ResetPassword.vue'
+import Dashboard from '../views/Dashboard.vue'
+import BulletinBoard from '../views/BulletinBoard.vue'
+import CardList from '../views/CardList.vue'
 
 Vue.use(VueRouter)
 
@@ -17,12 +18,12 @@ const routes = [
     component: DefaultLayout,
     children: [
       {
-        path: '/',
+        path: '',
         name: 'Home',
         component: Home
       },
       {
-        path: '/about',
+        path: 'about',
         name: 'About',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
@@ -30,14 +31,19 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
       },
       {
-        path: '/dashboard',
+        path: 'dashboard',
         name: 'Dashboard',
         component: Dashboard
       },
       {
-        path: '/grid-system',
-        name: 'GridSystem',
-        component: GridSystem
+        path: 'bulletin-board',
+        name: 'BulletinBoard',
+        component: BulletinBoard
+      },
+      {
+        path: 'card-list',
+        name: 'CardList',
+        component: CardList
       }
     ]
   },
