@@ -2,3 +2,7 @@
 .v-app-bar-title__content{
   width: min-content !important;
 }
+
+.v-select__selections input{
+  display: none;
+}

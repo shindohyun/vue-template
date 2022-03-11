@@ -4,6 +4,7 @@
       app color="primary" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer" />
       <v-app-bar-title>Vue Template</v-app-bar-title>
+      <v-spacer/>
       <v-container :class="$vuetify.breakpoint.mobile? 'd-none' : 'd-block'">
         <v-row justify="end">
           <v-col align-self="center" cols="auto">
