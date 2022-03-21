@@ -28,7 +28,64 @@
                   <span class="text-h5">{{ dialogTitle }}</span>
                 </v-card-title>
                 <v-card-text>
-                  <!-- Contents -->
+                  <v-container>
+                      <v-row>
+                        <v-col>
+                          <v-text-field 
+                            v-model="targetItem.id"
+                            label="ID"
+                            outlined
+                            dense
+                            hide-details
+                            :disabled="targetItemIndex != -1">
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <v-text-field 
+                            v-model="targetItem.name"
+                            label="NAME"
+                            outlined
+                            dense
+                            hide-details>
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <v-text-field 
+                            v-model="targetItem.email"
+                            label="EMAIL"
+                            outlined
+                            dense
+                            hide-details>
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <v-text-field 
+                            v-model="targetItem.mobile"
+                            label="MOBILE"
+                            outlined
+                            dense
+                            hide-details>
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                      <v-row>
+                        <v-col>
+                          <v-text-field 
+                            v-model="targetItem.address"
+                            label="ADDRESS"
+                            outlined
+                            dense
+                            hide-details>
+                          </v-text-field>
+                        </v-col>
+                      </v-row>
+                  </v-container>
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
@@ -274,6 +331,7 @@ export default {
       if (this.targetItemIndex > -1) {
         Object.assign(this.items[this.targetItemIndex], this.targetItem)
       } else {
+        this.targetItem.number = this.items[this.items.length-1].number + 1
         this.items.push(this.targetItem)
       }
       this.closeDialog()
