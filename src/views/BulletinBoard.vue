@@ -7,6 +7,7 @@
         checkbox-color="primary"
         hide-default-footer
         show-select
+        v-model="selected"
         :headers="headers"
         :items="items"
         :server-items-length="total"
@@ -36,16 +37,24 @@
                 </v-card-actions>
               </v-card>
             </v-dialog>
-            <v-dialog v-model="showDeleteDialog" max-width="500px">
+            <v-dialog v-model="showDeleteDialog" max-width="520px">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn color="red" dark v-bind="attrs" v-on="on">DELETE</v-btn>
               </template>
-              <v-card>
-                <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+              <v-card v-if="selected.length > 0">
+                <v-card-title class="text-h5 justify-center">Are you sure you want to delete {{ selected.length }} item(s)?</v-card-title>
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn color="blue darken-1" text @click="closeDeleteDialog()">Cancel</v-btn>
                   <v-btn color="blue darken-1" text @click="deleteItem()">OK</v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
+              </v-card>
+              <v-card v-else>
+                <v-card-title class="text-h5 justify-center">Please select item.</v-card-title>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="blue darken-1" text @click="closeDeleteDialog()">OK</v-btn>
                   <v-spacer></v-spacer>
                 </v-card-actions>
               </v-card>
@@ -161,6 +170,7 @@ export default {
         value: 20
       }
     ],
+    selected: [],
     // Add & Edit Dialog
     showDialog: false,
     targetItem: generateDefaultItem(),
@@ -278,7 +288,11 @@ export default {
     },
     // Delete Dialog
     deleteItem() {
-      // TODO: get selected items index
+      this.selected.forEach(item => {
+        const index = this.items.indexOf(item)
+        this.items.splice(index, 1)
+      })
+      this.selected = []
       this.closeDeleteDialog()
     },
     closeDeleteDialog() {
